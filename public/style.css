@@ -1,0 +1,16 @@
+* {
+    box-sizing: border-box;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+}
+
+header {
+    font-size: 3em;
+    color: #fff;
+    background-color: black;
+}
+
+header>img {
+    display: inline-block;
+    height: 3em;
+    width: 3em;
+}

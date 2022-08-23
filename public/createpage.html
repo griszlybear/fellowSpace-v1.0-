@@ -1,12 +1,32 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style1.css">
     <title>Create Star</title>
 </head>
+
 <body>
-    
+    <header>fellowSpace</header>
+    <div class="container">
+        <h1>Create Star</h1>
+        <form action="">
+            <input type="text" name="createStar" id="createStar" placeholder="Give your star a Title">
+            <input type="number" name="maxUser" id="maxUser" maxlength="2" placeholder="How many fellow user can join?">
+            <textarea name="shortDesc" id="shortDesc" cols="30" rows="10" placeholder="Give your star a short Description"></textarea>
+            <label for="allowBad">Check to allow bad words</label>
+            <input type="checkbox" name="allowBad" id="allowBad">
+            <input type="submit" value="Submit">
+        </form>
+
+        <a href="index.html">Go back</a>
+    </div>
+
+    <script src="/socket.io/socket.io.js"></script>
+    <script type="text/javascript" src="/js/index.js"></script>
 </body>
+
 </html>

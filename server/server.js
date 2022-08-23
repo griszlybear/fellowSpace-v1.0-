@@ -14,6 +14,13 @@ app.use(express.static(publicPath));
 io.on('connection', (socket) => {
     console.log("A new user just connected");
 
+    socket.emit('createStar', {
+        title: "allAboutLove",
+        users: 25,
+        shortDesc: "Love is in the air",
+        badWords: false
+    })
+
     socket.emit('newMessage', {
         from: "fellowBot",
         text: "Welcome to the space",

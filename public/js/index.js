@@ -12,3 +12,7 @@ socket.on('disconnect', function () {
 socket.on('newMessage', function (message) {
     console.log("newMessage", message);
 });
+
+socket.on('createStar', function (star) {
+    console.log("createStar", star);
+});
