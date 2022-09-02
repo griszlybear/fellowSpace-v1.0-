@@ -2,7 +2,7 @@ const path = require('path');
 const http = require('http');
 const express = require('express');
 const socketIO = require('socket.io');
-
+const {generateMessage} = require('./util/message');
 const publicPath = path.join(__dirname, '/../public');
 const port = process.env.PORT || 3000
 let app = express();
@@ -21,26 +21,13 @@ io.on('connection', (socket) => {
         badWords: false
     })
 
-    socket.emit('newMessage', {
-        from: "fellowBot",
-        text: "Welcome to the space",
-        createdAt: new Date().getTime()
-    })
+    socket.emit('newMessage', generateMessage('fellowBot', 'Welcome to the space'))
+    socket.broadcast.emit('newMessage', generateMessage('fellowBot', 'A new Anonymous user joined'))
 
-    
-    socket.broadcast.emit('newMessage', {
-        from: "fellowBot",
-        text: "A new anonymous one joined the chat",
-        createdAt: new Date().getTime()
-    })
-
-    socket.on('createMessage', (message) => {
+    socket.on('createMessage', (message, callback) => {
         console.log("Create Message", message);
-        io.emit('newMessage', {
-            from: message.from,
-            text: message.text,
-            createdAt: new Date().getTime()
-        })
+        io.emit('newMessage', generateMessage(message.from, message.text));
+        callback('This is the server');
     })
 
     socket.on('disconnect', () => {
